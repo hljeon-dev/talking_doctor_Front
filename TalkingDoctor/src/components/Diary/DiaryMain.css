@@ -1,0 +1,125 @@
+.diaryMain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.header {
+    background-color: #97eb81;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.subtitle {
+    font-size: 16px;
+    margin: 0 0 20px 0;
+}
+
+.dropdownContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.writeButton {
+    width: 30%;
+    height: 40px; 
+    background-color: #dbdbdb;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid #000000;
+}
+  
+.responsiveCalendar {
+    width: 100%;
+    height: 100%;
+}
+
+.react-calendar {
+    border: none; /* 전체 달력의 테두리를 없앱니다. */
+    box-shadow: none; /* 달력 그림자 제거 */
+}
+  
+.diary-marker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red; /* Marker color, adjust as needed */
+    font-size: 20px;
+}
+
+.react-calendar__tile {
+    height: 100px;  /* 날짜 셀의 높이, 필요에 따라 조정 가능 */
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .responsiveCalendar {
+      height: 400px;  /* 화면이 작을 때 높이 줄임 */
+    }
+}
+  
+@media (max-width: 480px) {
+    .responsiveCalendar {
+      height: 300px;  /* 더 작은 화면에서는 더 줄임 */
+    }
+}
+
+.diaryPopup {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* 달력 위에 나오도록 z-index 설정 */
+    padding: 20px;
+    width: 300px;
+  }
+  
+  .popupHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .closeButton {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .popupContent {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  .diaryEntry {
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+  }
+  
+  .diaryEntry:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .react-calendar__month-view__days__day {
+    width: 100px;
+  }
