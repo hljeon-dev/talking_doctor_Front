@@ -1,19 +1,41 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import axios from 'axios';
 
 const Login = () => {
-  const [id, setId] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false); // 에러 상태
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // 로그인 로직 구현 (예: DB와 연동)
-    if (id !== "ddd" || password !== "ddd") {
-      setError(true);
-    } else {
-      navigate('/Main'); // 로그인 성공 시 메인 페이지로 이동
+
+
+  // 로그인 처리 함수
+  const handleLogin = async () => {
+    try {
+      const loginData = {
+        email,
+        password
+      };
+
+      // 서버에 로그인 요청
+      const response = await axios.post('http://localhost:8080/api/auth/login', loginData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      // 로그인 성공 시 처리
+      if (response.status === 200) {
+        const data = response.data;
+        // JWT 토큰 로컬 스토리지 저장
+        localStorage.setItem('token', data.token);
+        navigate('/Main'); // 메인 페이지로 이동
+      }
+    } catch (error) {
+      console.error('로그인 중 오류 발생:', error);
+      setError(true); // 로그인 실패 시 에러 표시
     }
   };
 
@@ -39,9 +61,9 @@ const Login = () => {
       <p>토링닥터 토닥이가 사용자님을 도와드릴게요!</p>
       <input
         type="text"
-        placeholder="ID"
-        value={id}
-        onChange={(e) => setId(e.target.value)}
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <input
         type="password"

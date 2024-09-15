@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
+import axios from 'axios';
 
 const Signup = () => {
   const [nickname, setNickname] = useState('');
@@ -11,10 +12,12 @@ const Signup = () => {
   const [emailDomain, setEmailDomain] = useState('naver.com'); // 선택할 도메인 부분
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  //const [createdDate, setCreatedDate] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
+
     let newErrors = {};
     if (!nickname) newErrors.nickname = true;
     if (!lastname) newErrors.lastname = true;
@@ -29,7 +32,31 @@ const Signup = () => {
     } else {
       const fullEmail = `${emailLocal}@${emailDomain}`;
       console.log('Full Email:', fullEmail); // 이메일이 제대로 합쳐졌는지 확인
-      navigate('/Login'); // 회원가입 성공 시 로그인 페이지로 이동
+
+      const registerData = {
+        userName : nickname,
+        lastName : lastname,
+        firstName : firstname,
+        email: fullEmail, // email 필드로 보내는지 확인
+        password
+      };
+
+      console.log('Register Data:', registerData);
+
+      const response = await axios.post('http://localhost:8080/api/auth/register', registerData, {
+        headers: {
+          'Content-Type': 'application/json'
+          //'Authorization': `Bearer ${token}`
+        }});
+  
+      if (response.status === 200) {
+        const data = response.data;
+        localStorage.setItem('authToken', data.token); // JWT 토큰 로컬 스토리지 저장
+        // alert('회원가입 성공을 축하합니다');
+        // navigate('/login');
+        navigate('/Login'); // 회원가입 성공 시 로그인 페이지로 이동
+      }
+
     }
   };
 
