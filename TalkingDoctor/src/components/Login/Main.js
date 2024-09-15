@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Main.css';
 import TalkingDoctor from '../../assets/talkingDoctor.png';
 
 const Main = () => {
   const navigate = useNavigate();
+  const [daysSinceSignup, setDaysSinceSignup] = useState(0);
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const createDate = localStorage.getItem('createdDate');
+    const userNameFromStorage = localStorage.getItem('userName');
+
+    if (createDate && userNameFromStorage) {
+      setUserName(userNameFromStorage);
+
+      const signupDate = new Date(createDate);
+      const currentDate = new Date();
+      const timeDiff = currentDate - signupDate;
+      const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24))+1; // 일 수 계산
+      setDaysSinceSignup(daysDiff);
+    }
+  }, []);
 
   const handleProfileClick = () => {
     navigate('/profile');
@@ -16,11 +33,11 @@ const Main = () => {
 
   return (
     <div className="main-container">
-      <h1>000님</h1>
+      <h1>{userName}님</h1>
       
       <div className="day-check">
         <p>토닥이와 함께한지</p>
-        <h2>N일차</h2>
+        <h2>{daysSinceSignup}일차</h2>
       </div>
 
       <div className="image-container">

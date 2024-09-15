@@ -31,6 +31,8 @@ const Login = () => {
         const data = response.data;
         // JWT 토큰 로컬 스토리지 저장
         localStorage.setItem('token', data.token);
+        localStorage.setItem('userName', data.userName);        
+        localStorage.setItem('createdDate', data.createdDate);
         navigate('/Main'); // 메인 페이지로 이동
       }
     } catch (error) {
