@@ -47,15 +47,20 @@ const DiaryFeedback = () => {
     setDay(selectedOption.value);
   };
 
-  const handleOkButtonClick = () => {
-    navigate('/DiaryFeedback');
+  const handleMainButtonClick = () => {
+    navigate('/DiaryMain');
   }
+
+  const handleViewButtonClick = () => {
+    navigate('/DiaryView', { state: { selectedDate, entry: { content: diaryEntry, date: selectedDate } } });
+  }
+  
 
   return (
     <div className="diary-feedback-container">
       <div className="diary-feedback">
         <div className="header">
-          <h1 className="title">My Daily Diary</h1>
+          <h1 className="title">TalkingDoctor's Feedback</h1>
           <p className="subtitle">★토닥이의 피드백을 확인하세요★</p>
 
           <div className="dropdownContainer">
@@ -97,8 +102,11 @@ const DiaryFeedback = () => {
           </div>
         </div>
 
-        <button className="okButton" onClick={handleOkButtonClick}>확인</button>
-
+        <div className="feedback-page-button-control">
+          <button className="mainButton" onClick={handleMainButtonClick}>Main</button>
+          <button className="viewButton" onClick={handleViewButtonClick}>View</button>
+        </div>
+        
       </div>
     </div>    
   );

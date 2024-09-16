@@ -1,4 +1,3 @@
-/* General Styles */
 .diary-feedback-container {
   width: 100%;
   height: 100vh;
@@ -34,13 +33,14 @@
   
 /* Diary Content Before Feedback */
 .original-content-section {
+  width: 95%;
   margin: 0px 15px;
 }
 
 .original-section {
   background: rgba(251, 220, 93, 0.5);
   border-radius: 10px;
-  border: 1px solid black;
+  border: 2px solid rgb(251, 219, 93);
   padding: 10px;
   margin-bottom: 20px;
 }
@@ -53,10 +53,9 @@
   text-align: center;
   margin-bottom: 10px;
   background-color: rgba(251, 219, 93, 0.4);
-  width: 50%;
-  height: auto;
   padding: 5px;
   border-radius: 25px;
+  border: 2px solid rgb(251, 219, 93);
 }
   
 .original-content {
@@ -71,6 +70,7 @@
   
 /* Doctor's Feedback Section */
 .feedback-content-section{
+  width: 95%;
   display: flex;
   margin: 0px 15px;
 }
@@ -99,16 +99,17 @@
   height: auto;
   padding: 5px;
   border-radius: 25px;
+  border: 2px solid #96eb81;
 }
 
 .feedback-section {
   background: #96eb815f;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 2px solid #96eb81;
   padding: 10px;
   margin-bottom: 20px;
   flex-grow: 1;
-  margin-left: 10px;
+  margin-left: 20px;
 }
   
 .doctor-feedback-content {
@@ -117,6 +118,8 @@
   font-weight: 900;
   line-height: 12px;
   word-wrap: break-word;
+  height: 173px;
+  overflow-y: auto;
 }
   
 /* Miscellaneous Text Styles */
@@ -128,7 +131,14 @@
   text-align: center;
 }
 
-.okButton {
+.feedback-page-button-control {
+  display: flex;
+  text-align: center;
+  width: 95%;
+  justify-content: space-between;
+}
+
+.mainButton, .viewButton {
   width: 48%;
   height: 40px;
   background: #FBDC5D;

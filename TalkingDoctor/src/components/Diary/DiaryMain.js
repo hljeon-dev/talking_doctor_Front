@@ -168,7 +168,7 @@ const DiaryMain = () => {
           <button className="writeButton" onClick={handleWriteButtonClick}>일기 쓰기</button>
         </div>
       </div>
-
+      
       <div ref={calendarRef}>
         <Calendar
           value={currentDate}

@@ -1,11 +1,11 @@
-.diary-write-container {
+.diary-view-container {
     width: 100%;
     height: 100vh;
     position: absolute;
     background: white;
 }
 
-.diaryWrite {
+.diaryView {
     width: 100%;
     height: 100%;
     display: flex;
@@ -68,6 +68,10 @@
     line-height: 12px;
     word-wrap: break-word;
     flex-grow: 1;
+    line-height: 1.5; /* 줄 간격 설정 */
+    white-space: pre-wrap; /* 공백 및 줄바꿈 처리 */
+    word-wrap: break-word; /* 긴 단어를 줄 바꿈 */
+    resize: none; /* 사용자가 textarea 크기를 조정하지 못하도록 설정 */
 }
   
 .diary-footer {
@@ -76,8 +80,8 @@
     padding: 20px;
 }
   
-.cancel-button, .rewrite-button, .delete-button {
-    width: 48%;
+.view-cancel-button, .view-rewrite-button, .view-delete-button {
+    width: 30%;
     height: 40px;
     background: #FBDC5D;
     border-radius: 30px;
@@ -89,7 +93,7 @@
 }
   
 .feedback-button {
-    width: 30%;
+    width: 40%;
     height: 50px;
     background: #97EB81;
     border-radius: 30px;
@@ -103,6 +107,7 @@
     cursor: pointer;
     font-size: 14px;
     font-weight: 900;
+    margin-right: 1%;
 }
   
 .feedback-image {
@@ -113,4 +118,43 @@
     top: 5px;
     margin: 0px 5px;
 }
+
+/* 모달 오버레이 */
+.rewrite-modal-overlay, .delete-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* 모달 내용 */
+  .rewrite-modal-content, .delete-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+  }
+  
+  /* 확인 버튼 */
+  .rewrite-modal-button, .delete-modal-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .rewrite-modal-button:hover, .delete-modal-button:hover {
+    background-color: #45a049;
+  }
   
