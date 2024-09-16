@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Select from 'react-select';
 import './DiaryWrite.css';
+import axios from 'axios'
 import feedbackDoctor from '../../assets/feedbackDoctor.png';
 
 const DiaryWrite = ({ saveDiary }) => {
@@ -35,8 +36,15 @@ const DiaryWrite = ({ saveDiary }) => {
     navigate('/DiaryMain');
   };
 
-  const handleSave = () => {
-    saveDiary({ year, month, day, content });
+  const handleSave = async() => {
+    //saveDiary({ year, month, day, content });
+    const diaryAddData = {content};
+    const response = await axios.post('http://localhost:8080/api/diary/add',diaryAddData, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }});
+    
     navigate('/DiaryMain');
   };
 

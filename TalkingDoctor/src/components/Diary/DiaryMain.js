@@ -3,15 +3,43 @@ import { useNavigate } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Select from 'react-select';
+import axios from 'axios';
 import './DiaryMain.css';
 
-//DB연동되면서 수정해야할 사항
-const mockDiaryEntries = {
-  '2024-08-20': [
-    { time: '13:25', content: 'Today was quite eventful...' },
-    { time: '22:30', content: 'I finally found my ...' },
-  ],
-  '2024-08-31': [{ time: '10:00', content: 'Had a relaxing day ...' }],
+const fetchDiaryEntries = async () => {
+  try {
+    const response = await axios.get('http://localhost:8080/api/diary/get/all', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+
+    const diaryEntries = response.data;
+
+    // 날짜별로 데이터를 그룹화
+    const groupedEntries = diaryEntries.reduce((acc, entry) => {
+      const dateStr = entry.createdDate;  // createdDate는 "YYYY-MM-DD" 형식임
+      if (!acc[dateStr]) {
+        acc[dateStr] = [];
+      }
+
+      // updatedDateTime이 존재하는지 확인한 후 처리
+      const time = entry.updatedDateTime ? entry.updatedDateTime.split('T')[1].slice(0, 5) : '00:00';
+
+      acc[dateStr].push({
+        time: time,  // "HH:mm" 형식으로 시간 추출
+        content: entry.content || 'No content',  // 만약 content가 없다면 기본값 설정
+        diaryId: entry.diaryId
+      });
+      return acc;
+    }, {});
+
+    return groupedEntries;
+  } catch (error) {
+    console.error('Failed to fetch diary entries:', error);
+    return {};
+  }
 };
 
 const currentYear = new Date().getFullYear();
@@ -36,12 +64,21 @@ const DiaryMain = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth() + 1);
+  const [diaryEntries, setDiaryEntries] = useState({});
   const [diaryPopup, setDiaryPopup] = useState(null);
   const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
-  const diaryEntries = mockDiaryEntries;
 
   const navigate = useNavigate();
   const calendarRef = useRef(null);
+
+  useEffect(() => {
+    const loadDiaryEntries = async () => {
+      const entries = await fetchDiaryEntries();
+      setDiaryEntries(entries);  // 데이터를 상태에 저장
+    };
+
+    loadDiaryEntries();
+  }, []);
 
   const handleYearChange = (selectedOption) => {
     setSelectedYear(selectedOption.value);
@@ -109,7 +146,7 @@ const DiaryMain = () => {
             options={monthOptions}
             styles={selectStyles}
           />
-          <button className="writeButton" onClick={handleWriteButtonClick}>일기 쓰기 </button>
+          <button className="writeButton" onClick={handleWriteButtonClick}>일기 쓰기</button>
         </div>
       </div>
 
