@@ -1,0 +1,131 @@
+/* General Styles */
+.diary-feedback-container {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background: white;
+}
+
+.diary-feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+  
+.header {
+  background-color: #97eb81;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  margin: 0 0 20px 0;
+}
+  
+/* Diary Content Before Feedback */
+.original-content-section {
+  margin: 0px 15px;
+}
+
+.original-section {
+  background: rgba(251, 220, 93, 0.5);
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+  
+.original-title {
+  color: #544921;
+  font-size: 14px;
+  font-weight: 900;
+  word-wrap: break-word;
+  text-align: center;
+  margin-bottom: 10px;
+  background-color: rgba(251, 219, 93, 0.4);
+  width: 50%;
+  height: auto;
+  padding: 5px;
+  border-radius: 25px;
+}
+  
+.original-content {
+  color: black;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 12px;
+  word-wrap: break-word;
+  height: 173px;
+  overflow-y: auto;
+}
+  
+/* Doctor's Feedback Section */
+.feedback-content-section{
+  display: flex;
+  margin: 0px 15px;
+}
+
+.doctor-feedback-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+  
+.doctor-image {
+  width: 100px;
+  height: 128px;
+  margin-right: 10px;
+}
+
+.feedback-title{
+  color: #2B5421;
+  font-size: 14px;
+  font-weight: 900;
+  word-wrap: break-word;
+  text-align: center;
+  margin-bottom: 10px;
+  background-color: #96eb815f;
+  width: 100%;
+  height: auto;
+  padding: 5px;
+  border-radius: 25px;
+}
+
+.feedback-section {
+  background: #96eb815f;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 20px;
+  flex-grow: 1;
+  margin-left: 10px;
+}
+  
+.doctor-feedback-content {
+  color: black;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 12px;
+  word-wrap: break-word;
+}
+  
+/* Miscellaneous Text Styles */
+.more-text {
+  color: rgba(115, 115, 115, 0.55);
+  font-size: 10px;
+  font-weight: 900;
+  word-wrap: break-word;
+  text-align: center;
+}
+  
+  

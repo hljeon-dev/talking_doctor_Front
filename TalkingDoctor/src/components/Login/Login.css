@@ -1,0 +1,95 @@
+/* 모달 스타일 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 페이지 상단에 배치 */
+}
+
+.modal-content {
+  background-color: white;
+  width: 50%;
+  height: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal-content p {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.close-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #57d961;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+  background-color: #4ac050;
+}
+
+/* 기존 로그인 스타일 */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #b2f4a3, #d7e9b9);
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-container h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.login-container p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  width: 80%;
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  background-color: #d7e9b9;
+}
+
+.login-container button {
+  width: 80%;
+  padding: 15px;
+  margin-top: 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  background-color: #6df077;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+  background-color: #57d961;
+}
