@@ -127,5 +127,16 @@
   word-wrap: break-word;
   text-align: center;
 }
-  
+
+.okButton {
+  width: 48%;
+  height: 40px;
+  background: #FBDC5D;
+  border-radius: 30px;
+  color: black;
+  font-size: 14px;
+  font-weight: 900;
+  border: none;
+  cursor: pointer;
+}
   

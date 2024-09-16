@@ -7,7 +7,11 @@ import talkingDoctor from '../../assets/talkingDoctor.png';
 const DiaryFeedback = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  // DiaryWrite에서 전달된 selectedDate와 diaryEntry
   const selectedDate = location.state?.selectedDate || new Date();
+  const diaryEntry = location.state?.diaryEntry || '작성한 일기가 없습니다.';
+  const feedback = location.state?.feedback || '피드백이 없습니다.';
 
   const [year, setYear] = useState(selectedDate.getFullYear());
   const [month, setMonth] = useState(selectedDate.getMonth() + 1);
@@ -43,10 +47,9 @@ const DiaryFeedback = () => {
     setDay(selectedOption.value);
   };
 
-  const { diaryEntry, feedback } = location.state || {
-    diaryEntry: '작성한 일기가 없습니다.',
-    feedback: '피드백이 없습니다.',
-  };
+  const handleOkButtonClick = () => {
+    navigate('/DiaryFeedback');
+  }
 
   return (
     <div className="diary-feedback-container">
@@ -93,6 +96,9 @@ const DiaryFeedback = () => {
             <div className="doctor-feedback-content">{feedback}</div>
           </div>
         </div>
+
+        <button className="okButton" onClick={handleOkButtonClick}>확인</button>
+
       </div>
     </div>    
   );

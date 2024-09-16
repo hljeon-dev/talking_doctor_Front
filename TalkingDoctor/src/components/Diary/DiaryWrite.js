@@ -50,8 +50,8 @@ const DiaryWrite = ({ saveDiary }) => {
 
   
   const openFeedback = () => {
-    navigate('/DiaryFeedback');
-  }
+    navigate('/DiaryFeedback', { state: { selectedDate, diaryEntry: content } });  // 작성한 일기와 날짜를 전달
+  };
 
   const handleYearChange = (selectedOption) => {
     setYear(selectedOption.value);

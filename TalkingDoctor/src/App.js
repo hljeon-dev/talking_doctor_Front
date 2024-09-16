@@ -9,6 +9,8 @@ import Main from './components/Login/Main';
 import DiaryMain from './components/Diary/DiaryMain';
 import DiaryWrite from './components/Diary/DiaryWrite';
 import DiaryFeedback from './components/Diary/DiaryFeedback';
+import DiaryView from './components/Diary/DiaryView';
+
 
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
         <Route path="/DiaryMain" element={<DiaryMain />} />
         <Route path="/DiaryWrite" element={<DiaryWrite saveDiary={saveDiary} />} />
         <Route path="/DiaryFeedback" element={<DiaryFeedback />} />
+        <Route path="/DiaryView" element={<DiaryView />} />
       </Routes>
     </Router>
   );
