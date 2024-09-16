@@ -70,6 +70,8 @@ const DiaryMain = () => {
 
   const navigate = useNavigate();
   const calendarRef = useRef(null);
+  const popupRef = useRef(null);  // 팝업을 감지하기 위한 ref
+
 
   useEffect(() => {
     const loadDiaryEntries = async () => {
@@ -79,6 +81,23 @@ const DiaryMain = () => {
 
     loadDiaryEntries();
   }, []);
+
+  // 팝업 외부 클릭 감지
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setDiaryPopup(null);  // 팝업 외부를 클릭하면 팝업 닫기
+      }
+    };
+
+    // 마운트 시 이벤트 리스너 추가
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // 언마운트 시 이벤트 리스너 제거
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [popupRef]);
 
   const handleYearChange = (selectedOption) => {
     setSelectedYear(selectedOption.value);
@@ -166,6 +185,7 @@ const DiaryMain = () => {
         <div
           className="diaryPopup"
           style={{ position: 'absolute', top: popupPosition.top, left: popupPosition.left }}
+          ref={popupRef}  // 팝업 요소에 ref 추가
         >
           <div className="popupHeader">
             <span>{diaryPopup.date} 일기 목록</span>
