@@ -24,7 +24,7 @@ const Main = () => {
   }, []);
 
   const handleProfileClick = () => {
-    navigate('/profile');
+    navigate('/FreeTalkingMain');
   };
 
   const handleDiaryClick = () => {

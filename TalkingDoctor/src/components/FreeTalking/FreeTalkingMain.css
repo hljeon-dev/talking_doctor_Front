@@ -1,0 +1,92 @@
+/* 기본 컨테이너 설정 */
+.community-container {
+  /*padding: 20px;*/
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #97eb81;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  margin: 0 0 20px 0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 카드 리스트 */
+.topics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+/* 각 카드 스타일 */
+.topic-card {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.topic-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* 아이콘 스타일 */
+.icon {
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+/* 콘텐츠 섹션 */
+.content {
+  flex-grow: 1;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* 좋아요 수 */
+.likes {
+  font-size: 1rem;
+  color: #ff4081;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 600px) {
+  .topic-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .icon {
+    margin-bottom: 10px;
+  }
+}

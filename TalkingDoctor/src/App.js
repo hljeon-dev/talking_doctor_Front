@@ -11,6 +11,9 @@ import DiaryWrite from './components/Diary/DiaryWrite';
 import DiaryFeedback from './components/Diary/DiaryFeedback';
 import DiaryView from './components/Diary/DiaryView';
 
+import FreeTalkingMain from './components/FreeTalking/FreeTalkingMain';
+import FreeTalking from './components/FreeTalking/FreeTalking';
+
 
 
 function App() {
@@ -33,6 +36,9 @@ function App() {
         <Route path="/DiaryWrite" element={<DiaryWrite saveDiary={saveDiary} />} />
         <Route path="/DiaryFeedback" element={<DiaryFeedback />} />
         <Route path="/DiaryView" element={<DiaryView />} />
+
+        <Route path="/FreeTalkingMain" element={<FreeTalkingMain />} />
+        <Route path="/FreeTalking" element={<FreeTalking />} />
       </Routes>
     </Router>
   );
